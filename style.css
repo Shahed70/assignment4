@@ -126,3 +126,27 @@ nav ul li a:hover, a.active{
     display: flex;
     justify-content: space-between;
 }
+.box-container{
+    margin: 100px auto;
+    width: 40%;
+    height: 250px;
+    background-color: #fff;
+    border-radius: 10px;
+    justify-content: space-between;
+    padding-left: 50px;
+    display: none;
+}
+.box-container h3, .details{
+    text-align: center;
+}
+.box-container h3{
+    padding-top: 20px;
+}
+.flex-box{
+    display: flex;  
+}
+.flex-item{
+    padding: 20px;
+    font-size: 20px;
+    margin: 20px;
+}

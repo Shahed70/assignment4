@@ -8,32 +8,28 @@ function updateTicketNumber(isIncrease, nuberOfTicket){
          newTicketNumber = parsedTicketNumer - 1;
      }
     ticketInputNumber.value = newTicketNumber;
-    ticketSubtotal();
+    ticketSubtotal('sub-total', 'tax-amount', 'grand-total');
 }
 
 
 
 
-function ticketSubtotal(){
-        const ticketInputNumber = document.getElementById('firstClassTicketValue');
-        const parsedTicketNumer = parseInt(ticketInputNumber.value);
+function ticketSubtotal(firstTotal, taxAmount, Total, tickets, mainBody, accountBox){
+        const firstClassTicket = document.getElementById('firstClassTicketValue');
+        const parseFirstClassTicketsStr = parseInt(firstClassTicket.value);
 
-        const ecoNomyTicketNumber  = document.getElementById('economyTicketValue');
-        const economyParseToInteger = parseInt(ecoNomyTicketNumber.value);
+        const ecoNomyTicket  = document.getElementById('economyTicketValue');
+        const parseEconomyTicketStr = parseInt(ecoNomyTicket.value);
 
+        const subTotal = parseFirstClassTicketsStr * 150 + parseEconomyTicketStr * 100;
 
-        const subTotal = parsedTicketNumer * 150 + economyParseToInteger * 100;
-
-        const newSubTotal = document.getElementById('sub-total').innerText = subTotal;
-        const tax = Math.floor(parseInt(newSubTotal)*0.1);
-        document.getElementById('tax-amount').innerText = tax;
+        document.getElementById(firstTotal).innerText = '$ '+subTotal;
+        const tax = Math.floor(subTotal*0.1);
+        document.getElementById(taxAmount).innerText = '$ '+tax;
         const grandTotal = subTotal + tax;
-        document.getElementById('grand-total').innerText = grandTotal
- }
-
-
- 
-
- function bookNow(){
-     alert('hi')
+        document.getElementById(Total).innerText ='$ '+grandTotal
+        const numberOfTicket = parseFirstClassTicketsStr + parseEconomyTicketStr;
+        document.getElementById(tickets).innerText = numberOfTicket
+        document.getElementById(mainBody).style.display = 'none';
+        document.getElementById(accountBox).style.display = 'block';
  }
